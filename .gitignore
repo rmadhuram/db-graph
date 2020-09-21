@@ -1,0 +1,14 @@
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.env*
+.tmp/
+dist/
+data/
+config.json
+.history/
+build/
+**/.DS_Store
+local-test*

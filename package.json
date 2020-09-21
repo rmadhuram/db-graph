@@ -1,0 +1,28 @@
+{
+  "name": "db-graph",
+  "version": "1.0.0",
+  "description": "Create in-memory subgraphs of an entire relational DB",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 100000 tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmadhuram/db-graph.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmadhuram/db-graph/issues"
+  },
+  "homepage": "https://github.com/rmadhuram/db-graph#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mysql": "^2.18.1",
+    "pino": "^6.6.0"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^8.1.3"
+  }
+}
