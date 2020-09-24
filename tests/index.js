@@ -82,7 +82,7 @@ describe('a simple graph with foreign keys', () => {
   })
 
   it('init graph', async function() {
-    this.timeout(5000)
+    this.timeout(10000)
     await insertStudents(3)
     await insertSubjects(2)
     await insertScore([
@@ -124,6 +124,7 @@ describe('check with 100 student records', function() {
     assert(graph['student'])
     assert.strictEqual(Object.keys(graph['student']).length, 100)
     assert.strictEqual(graph['student'][10]['name'], 'student10')
+
     let idMap = graph.getIdMap('student', 'external_id')
     assert.strictEqual(idMap[1000]['name'], 'student1')
   })

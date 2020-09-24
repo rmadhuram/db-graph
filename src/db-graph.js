@@ -91,6 +91,7 @@ class DBGraph {
       Object.keys(fk).forEach(key => {
 
         // this is of the form <entiity>.<field>, e.g: campaign.id
+        // TODO: right now we are just using the PK of the foreign key entity. We have to use the correct FK
         let [fkEntityName, fkEntityField] = fk[key].split('.')
         //logger.info(`fkEntityName: ${fkEntityName} fkEntityField: ${fkEntityField}`)
 
