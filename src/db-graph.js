@@ -1,5 +1,8 @@
 const db = require('./db');
-const { logger } = require('./logger');
+const { logger } = require('../logger');
+const EventEmitter = require('events');
+
+const EVENT_FINISHED_UPDATE = 'update.finished'
 
 // we are maintaining a map of new updates so that we can generate links only for updated entities.
 var updatesMap = {}
@@ -16,8 +19,9 @@ function makePlural(str) {
   return str + 's'
 }
 
-class DBGraph {
+class DBGraph extends EventEmitter {
   constructor(dbSpec, options) {
+    super()
     this._spec = dbSpec
     this._options = options
     this._intervalTimer = null
@@ -74,7 +78,11 @@ class DBGraph {
           })
         }
       }
-    }  
+    }
+    
+    if (isUpdate) {
+      this.emit(EVENT_FINISHED_UPDATE)
+    }
   }
 
   // private method
@@ -105,7 +113,6 @@ class DBGraph {
         let containerKey = makePlural(convertToLCC(entity))
         //console.log(JSON.stringify(fkEntityMap, null, 2))
         //logger.info(`fkEntityMap: ${fkEntityMap} containerKey: ${containerKey}`)
-
 
         let thisEntityMap = updatesMap[entity]  // Use current updates. 
         //console.log(JSON.stringify(thisEntityMap, null, 2))
